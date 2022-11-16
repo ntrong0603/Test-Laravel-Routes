@@ -43,27 +43,26 @@ Route::get("/log-in", function () {
 // Assign middleware "auth"
 // Put one Route Group code line here below
 Route::middleware(['auth'])->group(function () {
-});
+    // Tasks inside that Authenticated group:
 
-// Tasks inside that Authenticated group:
-
-// Task 6: /app group within a group
-// Add another group for routes with prefix "app"
-// Put one Route Group code line here below
-
-Route::prefix('app')->group(function () {
-    // Tasks inside that /app group:
-
-    // Task 7: point URL /app/dashboard to a "Single Action" DashboardController
-    // Assign the route name "dashboard"
+    // Task 6: /app group within a group
+    // Add another group for routes with prefix "app"
     // Put one Route Group code line here below
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class])->name("dashboard");
 
-    // Task 8: Manage tasks with URL /app/tasks/***.
-    // Add ONE line to assign 7 resource routes to TaskController
-    // Put one code line here below
-    Route::resource('/tasks', App\Http\Controllers\TaskController::class);
-    // End of the /app Route Group
+    Route::prefix('app')->group(function () {
+        // Tasks inside that /app group:
+
+        // Task 7: point URL /app/dashboard to a "Single Action" DashboardController
+        // Assign the route name "dashboard"
+        // Put one Route Group code line here below
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class])->name("dashboard");
+
+        // Task 8: Manage tasks with URL /app/tasks/***.
+        // Add ONE line to assign 7 resource routes to TaskController
+        // Put one code line here below
+        Route::resource('/tasks', App\Http\Controllers\TaskController::class);
+        // End of the /app Route Group
+    });
 });
 
 
